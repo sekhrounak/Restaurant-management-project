@@ -1,0 +1,97 @@
+<div class="min-h-screen flex flex-col bg-[#FAF9F5] text-stone-800 antialiased selection:bg-[#C5A059]/30 selection:text-[#244B3B]">
+  <!-- Top Navigation Header -->
+  <app-navbar />
+
+  <!-- Main Routing Viewport -->
+  <main class="flex-1 pb-16">
+    <router-outlet />
+  </main>
+
+  <!-- Luxury Restaurant Footer -->
+  <footer class="bg-[#193529] text-[#F6F5F0] border-t border-[#244B3B] mt-auto no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- Brand Summary -->
+        <div class="space-y-3 md:col-span-1">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DFC48A] to-[#C5A059] flex items-center justify-center text-[#244B3B] font-bold shadow">
+              <mat-icon class="text-xl">restaurant</mat-icon>
+            </div>
+            <span class="font-serif-luxury text-2xl font-bold tracking-wide text-white">AURA</span>
+          </div>
+          <p class="text-xs text-stone-300 leading-relaxed">
+            Haute cuisine, bespoke cellar pairings, and intimate dining experiences designed for refined culinary connoisseurs.
+          </p>
+          <div class="pt-1 flex items-center gap-2">
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-[#DFC48A] bg-[#244B3B] px-2.5 py-1 rounded-full border border-[#C5A059]/30">
+              <mat-icon class="text-xs">star</mat-icon>
+              <span>Michelin Rated 2026</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Hours & Location -->
+        <div class="space-y-2 text-xs">
+          <h4 class="font-bold text-[#DFC48A] uppercase tracking-wider text-xs">Service Hours</h4>
+          <p class="text-stone-300">Dinner: Mon &ndash; Sun: 17:30 &ndash; 23:00</p>
+          <p class="text-stone-300">Weekend Brunch: Sat &ndash; Sun: 11:00 &ndash; 15:00</p>
+          <p class="text-stone-400 mt-2">420 Grand Boulevard, Culinary Arts Quarter</p>
+          <p class="text-stone-400">Tel: +1 (555) 800-AURA</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="space-y-2 text-xs">
+          <h4 class="font-bold text-[#DFC48A] uppercase tracking-wider text-xs">Hospitality Access</h4>
+          <ul class="space-y-1.5 text-stone-300">
+            <li><a routerLink="/customer/booking" class="hover:text-white transition-colors">Book a Table</a></li>
+            <li><a routerLink="/customer/menu" class="hover:text-white transition-colors">Artisanal Food Menu</a></li>
+            <li><a routerLink="/customer/reservations" class="hover:text-white transition-colors">Reservation Passes</a></li>
+            <li><a routerLink="/customer/orders" class="hover:text-white transition-colors">Order Tracker</a></li>
+            <li><a routerLink="/auth/login" class="hover:text-white transition-colors">Switch Profile / Login</a></li>
+          </ul>
+        </div>
+
+        <!-- Admin Portal Access -->
+        <div class="space-y-2 text-xs">
+          <h4 class="font-bold text-[#DFC48A] uppercase tracking-wider text-xs">Management & Operations</h4>
+          <p class="text-stone-300">Quick management portals for culinary and front-of-house staff:</p>
+          <div class="pt-2 flex flex-col gap-1.5">
+            <a routerLink="/admin/dashboard" class="text-stone-300 hover:text-white transition-colors flex items-center gap-1.5">
+              <mat-icon class="text-xs text-[#DFC48A]">analytics</mat-icon>
+              <span>Admin Operations Dashboard</span>
+            </a>
+            <a routerLink="/admin/orders" class="text-stone-300 hover:text-white transition-colors flex items-center gap-1.5">
+              <mat-icon class="text-xs text-[#DFC48A]">soup_kitchen</mat-icon>
+              <span>Kitchen Display System</span>
+            </a>
+            <a routerLink="/admin/table-management" class="text-stone-300 hover:text-white transition-colors flex items-center gap-1.5">
+              <mat-icon class="text-xs text-[#DFC48A]">grid_view</mat-icon>
+              <span>Floor Plan & Tables</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="mt-8 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-400 gap-4">
+        <p>&copy; {{ currentYear }} Aura Table & Bar. All rights reserved. Built with Angular & LocalStorage.</p>
+        <div class="flex items-center gap-3">
+          <span class="text-stone-400">Current View:</span>
+          <span class="px-2 py-0.5 rounded text-[11px] font-bold uppercase"
+            [class.bg-[#244B3B]]="authService.currentRole() === 'customer'"
+            [class.text-[#DFC48A]]="authService.currentRole() === 'customer'"
+            [class.bg-[#C5A059]]="authService.currentRole() === 'admin'"
+            [class.text-[#193529]]="authService.currentRole() === 'admin'"
+          >
+            {{ authService.currentRole() === 'customer' ? 'Customer Experience' : 'Executive Admin' }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Global Toast Notification System -->
+  <app-toast-container />
+</div>

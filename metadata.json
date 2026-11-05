@@ -1,0 +1,6 @@
+{
+  "name": "Aura Table & Bar - Restaurant Management System",
+  "description": "Premium restaurant management SaaS platform featuring table reservations, interactive table floor plan, digital food ordering, live order tracking, and comprehensive admin management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
